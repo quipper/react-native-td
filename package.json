@@ -1,8 +1,8 @@
 {
-  "name": "react-native-react-native-td",
-  "version": "1.0.0",
+  "name": "react-native-td",
+  "version": "0.9.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,12 @@
   ],
   "author": "",
   "license": "",
-  "peerDependencies": {
-    "react-native": "^0.41.2"
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-native": "0.51.0"
+  },
+  "devDependencies": {
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
   }
 }
