@@ -1,0 +1,5 @@
+rootProject.name = 'RNTreasureDataExample'
+include ':react-native-td'
+project(':react-native-td').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-td/android')
+
+include ':app'

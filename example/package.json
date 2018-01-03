@@ -1,0 +1,51 @@
+{
+  "name": "RNTreasureDataExample",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "tsc": "tsc",
+    "clean": "rimraf artifacts",
+    "build": "yarn run clean && yarn run tsc",
+    "watch": "yarn run build -w",
+    "build:ios": "react-native bundle --entry-file='./index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'",
+    "build:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "start:ios": "yarn run build && concurrently -r 'yarn run watch' 'react-native run-ios'",
+    "start:android": "yarn run build && concurrently -r 'yarn run watch' 'react-native run-android'",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-native": "0.51.0",
+    "react-native-td": "file:../"
+  },
+  "devDependencies": {
+    "@types/jest": "^21.1.1",
+    "@types/react": "^16.0.7",
+    "babel-jest": "22.0.4",
+    "babel-preset-react-native": "4.0.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "concurrently": "^3.5.1",
+    "jest": "22.0.4",
+    "react-test-renderer": "16.0.0",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^21.0.1",
+    "typescript": "^2.6.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native)"
+    ],
+    "testRegex": "(/__tests__/.*|(Test))\\.(ts|tsx)$"
+  }
+}
