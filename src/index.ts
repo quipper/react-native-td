@@ -1,7 +1,47 @@
 import { NativeModules } from "react-native";
 
+export interface TreasureData {
+  initialize: (apiKey: string) => void;
+  initializeApiEndpoint: (apiEndpoint: string) => void;
+  initializeEncryptionKey: (encryptionKey: string) => void;
+  setDefaultDatabase: (databse: string) => void;
+  enableAutoAppendUniqId: () => void;
+  disableAutoAppendUniqId: () => void;
+  enableAutoAppendRecordUUID: (column: string) => void;
+  disableAutoAppendRecordUUID: () => void;
+  enableAutoAppendModelInformation: () => void;
+  disableAutoAppendModelInformation: () => void;
+  enableAutoAppendAppInformation: () => void;
+  disableAutoAppendAppInformation: () => void;
+  enableAutoAppendLocaleInformation: () => void;
+  disableAutoAppendLocaleInformation: () => void;
+  enableServerSideUploadTimestamp: (column: string) => void;
+  disableServerSideUploadTimestamp: () => void;
+  enableLogging: () => void;
+  disableLogging: () => void;
+  addEvent: (record: object, database: string, table: string) => void;
+  addEventWithCallback: (
+    record: object,
+    database: string | undefined | null,
+    table: string,
+    onSuccess: () => void,
+    onError: (errorCode: string, message: string) => void
+  ) => void;
+  uploadEvents: () => void;
+  uploadEventsWithCallback: (
+    onSuccess: () => void,
+    onFailure: (errorCode: string, message: string) => void
+  ) => void;
+  startSession: (table: string, database: string) => void;
+  endSession: (table: string, database: string) => void;
+  getSessionId: () => Promise<string>;
+  isFirstRun: () => Promise<boolean>;
+  clearFirstRun: () => void;
+  setSessionTimeoutMilli: (to: number) => void;
+}
+
+const TreasureData: TreasureData = {} as TreasureData;
 const { RNTreasureData } = NativeModules;
-const TreasureData: any = {};
 
 TreasureData.initialize = (apiKey: string) => {
   return RNTreasureData.initialize(apiKey);
@@ -31,7 +71,7 @@ TreasureData.enableAutoAppendRecordUUID = () => {
   return RNTreasureData.enableAutoAppendRecordUUID();
 };
 
-TreasureData.enaAutoAppendRecordUUID = (column: string) => {
+TreasureData.enableAutoAppendRecordUUID = (column: string) => {
   return RNTreasureData.enableAutoAppendRecordUUID(column);
 };
 
@@ -93,27 +133,27 @@ TreasureData.addEvent = (record: object, table: string) => {
 
 TreasureData.addEventWithCallback = (
   record: object,
-  database: string,
+  database: string | undefined | null,
   table: string,
   onSuccess: () => void,
   onError: (errorCode: string, message: string) => void
 ) => {
-  return RNTreasureData.addEventWithCallback(
-    record,
-    database,
-    table,
-    onSuccess,
-    onError
-  );
-};
-
-TreasureData.addEventWithCallback = (
-  record: object,
-  table: string,
-  onSuccess: () => void,
-  onError: (errorCode: string, message: string) => void
-) => {
-  return RNTreasureData.addEventWithCallback(record, table, onSuccess, onError);
+  if (database) {
+    return RNTreasureData.addEventWithCallback(
+      record,
+      database,
+      table,
+      onSuccess,
+      onError
+    );
+  } else {
+    return RNTreasureData.addEventWithCallback(
+      record,
+      table,
+      onSuccess,
+      onError
+    );
+  }
 };
 
 TreasureData.uploadEvents = () => {
