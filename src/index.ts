@@ -191,11 +191,11 @@ TreasureData.endSession = (table: string, database: string) => {
   return RNTreasureData.endSession(table, database);
 };
 
-TreasureData.getSessionId = async (): Promise<string> => {
+TreasureData.getSessionId = (): Promise<string> => {
   return RNTreasureData.getSessionId();
 };
 
-TreasureData.isFirstRun = async (): Promise<boolean> => {
+TreasureData.isFirstRun = (): Promise<boolean> => {
   return RNTreasureData.isFirstRun();
 };
 
