@@ -42,7 +42,7 @@ jobs:
           name: Compile TypeScript
           command: 'yarn tsc'
      - run:
-          name: Build example module
+          name: Compile example module
           command: |
             cd ./example
             yarn install
@@ -74,7 +74,7 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  build-compile-deploy:
     jobs:
       - bundle_dependencies
       - compile_source:
