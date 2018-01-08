@@ -66,11 +66,11 @@ jobs:
       - run:
           name: Compile TypeScript
           command: 'yarn tsc'
-      # - run:
-      #     name: Login to npm and publish
-      #     command: |
-      #       echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      #       npm publish
+      - run:
+          name: Login to npm and publish
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            npm publish
 
 workflows:
   version: 2
