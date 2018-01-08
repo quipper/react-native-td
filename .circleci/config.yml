@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  bundle_dependencies:
+    working_directory: ~/react-native-td
+    docker:
+      - image: circleci/node:8.7.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}
+      - run:
+          name: System information
+          command: |
+            echo "Node $(node -v)"
+            echo "npm $(node -v)"
+            echo "yarn $(yarn -version)"
+      - run:
+          name: Install dependencies
+          command: 'yarn install'
+      - save_cache:
+          key: react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/qlearn-react-native/node_modules
+            - ~/.cache/yarn
+
+  compile:
+    working_directory: ~/react-native-td
+    docker:
+      - image: circleci/node:8.7.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}
+      - run:
+          name: Install dependencies
+          command: 'yarn install'
+      - run:
+          name: Compile
+          command: 'yarn tsc'
+
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - bundle_dependencies
+      - compile:
+          requires:
+            - bundle_dependencies
