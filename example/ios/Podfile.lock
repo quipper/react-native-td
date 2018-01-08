@@ -2,9 +2,6 @@ PODS:
   - KeenClientTD (3.2.32)
   - React (0.51.0):
     - React/Core (= 0.51.0)
-  - react-native-td (0.9.0):
-    - React
-    - TreasureData-iOS-SDK
   - React/BatchedBridge (0.51.0):
     - React/Core
     - React/cxxreact_legacy
@@ -24,23 +21,26 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNTreasureData (0.9.0):
+    - React
+    - TreasureData-iOS-SDK
   - TreasureData-iOS-SDK (0.1.24):
     - KeenClientTD (= 3.2.32)
   - yoga (0.51.0.React)
 
 DEPENDENCIES:
-  - react-native-td (from `../node_modules/react-native-td`)
   - React/BatchedBridge (from `../node_modules/react-native`)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNTreasureData (from `../node_modules/react-native-td`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 EXTERNAL SOURCES:
   React:
     :path: ../node_modules/react-native
-  react-native-td:
+  RNTreasureData:
     :path: ../node_modules/react-native-td
   yoga:
     :path: ../node_modules/react-native/ReactCommon/yoga
@@ -48,10 +48,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   KeenClientTD: 66da83b01742f4983925391e70b5beecb4096bd1
   React: 352f02f1db6e4744f9a758527e13e3fdefbbd6ba
-  react-native-td: 85c9511553229a7da557a88f92a362d7212d8f6b
+  RNTreasureData: 2f2dfa9686d40a5fb80d7e3bfb689386a041634b
   TreasureData-iOS-SDK: e8b6d8cde3807c4ad600eb132227fb4eb20762bd
   yoga: b5d96400ca8b2936965a7a6516da7c1177f432a3
 
-PODFILE CHECKSUM: 3c0794c12519f297884c7381157ecbc8b008e7a7
+PODFILE CHECKSUM: 098acb1bc56c5af1525359c18bf272726602229b
 
 COCOAPODS: 1.3.1

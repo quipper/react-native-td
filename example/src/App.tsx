@@ -39,7 +39,7 @@ export default class App extends Component<Props, State> {
 
   componentDidMount() {
     TreasureData.addEventWithCallback(
-      { event: "installed" },
+      { event: "event_name" },
       "databse_name",
       "record_name",
       () => {
