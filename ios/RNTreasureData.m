@@ -36,7 +36,7 @@ RCT_EXPORT_METHOD(initializeEncryptionKey:
 RCT_EXPORT_METHOD(setDefaultDatabase:
                   (NSString *) defaultDatabase)
 {
-    [TreasureData setDefaultDatabase:defaultDatabase];
+    [[TreasureData sharedInstance] setDefaultDatabase:defaultDatabase];
 }
 
 RCT_EXPORT_METHOD(enableAutoAppendUniqId)

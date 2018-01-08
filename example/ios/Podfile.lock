@@ -1,7 +1,5 @@
 PODS:
   - KeenClientTD (3.2.32)
-  - React (0.51.0):
-    - React/Core (= 0.51.0)
   - React/BatchedBridge (0.51.0):
     - React/Core
     - React/cxxreact_legacy
@@ -22,7 +20,6 @@ PODS:
     - React/fishhook
     - React/RCTBlob
   - RNTreasureData (0.9.0):
-    - React
     - TreasureData-iOS-SDK
   - TreasureData-iOS-SDK (0.1.24):
     - KeenClientTD (= 3.2.32)
@@ -48,7 +45,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   KeenClientTD: 66da83b01742f4983925391e70b5beecb4096bd1
   React: 352f02f1db6e4744f9a758527e13e3fdefbbd6ba
-  RNTreasureData: 2f2dfa9686d40a5fb80d7e3bfb689386a041634b
+  RNTreasureData: 8d7fb2430df1f57232afba640f75cd80d66b1a5b
   TreasureData-iOS-SDK: e8b6d8cde3807c4ad600eb132227fb4eb20762bd
   yoga: b5d96400ca8b2936965a7a6516da7c1177f432a3
 
