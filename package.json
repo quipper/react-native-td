@@ -1,17 +1,25 @@
 {
-  "name": "react-native-react-native-td",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "react-native-td",
+  "version": "0.9.0",
+  "description": "An unofficial React Native SDK for Treasure Data.",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tsc": "tsc",
+    "lint": "tslint --project tsconfig.json"
   },
-  "keywords": [
-    "react-native"
-  ],
-  "author": "",
-  "license": "",
+  "author": "Shintaro Katafuchi",
+  "bugs": "https://github.com/quipper/react-native-td/issues",
+  "license": "APACHE-2.0",
+  "keywords": ["react-native", "treasure-data"],
   "peerDependencies": {
-    "react-native": "^0.41.2"
+    "react": "^16.0.0",
+    "react-native": "0.51.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.7",
+    "@types/react-native": "^0.48.9",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
   }
 }
