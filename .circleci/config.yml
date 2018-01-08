@@ -41,10 +41,10 @@ jobs:
       - run:
           name: Compile TypeScript
           command: 'yarn tsc'
-     - run:
-          name: Compile example module
-          command: |
-            cd ./example
+    #  - run:
+          # name: Compile example module
+          # command: |
+            # cd ./example
             # yarn install
             # yarn tsc
             # yarn build:ios
@@ -63,9 +63,9 @@ jobs:
       - run:
           name: Install dependencies
           command: 'yarn install'
-      # - run:
-      #     name: Compile TypeScript
-      #     command: 'yarn tsc'
+      - run:
+          name: Compile TypeScript
+          command: 'yarn tsc'
     #  - run:
     #       name: Login to npm and publish
     #       command: |
