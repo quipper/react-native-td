@@ -24,6 +24,7 @@ jobs:
           paths:
             - ~/qlearn-react-native/node_modules
             - ~/.cache/yarn
+
   build:
     working_directory: ~/react-native-td
     docker:
@@ -48,6 +49,7 @@ jobs:
             tsc
             yarn build:ios
             yarn build:android
+
   deploy:
     working_directory: ~/react-native-td
     docker:
