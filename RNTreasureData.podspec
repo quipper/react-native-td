@@ -1,6 +1,6 @@
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-td"
+  s.name         = "RNTreasureData"
   s.version      = "0.9.0"
   s.summary      = "RNReactNativeTd"
   s.description  = <<-DESC
@@ -16,4 +16,3 @@ Pod::Spec.new do |s|
   s.dependency "React"
   s.dependency "TreasureData-iOS-SDK"
 end
-  
