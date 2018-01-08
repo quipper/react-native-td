@@ -41,14 +41,14 @@ jobs:
       - run:
           name: Compile TypeScript
           command: 'yarn tsc'
-    #  - run:
-    #       name: Compile example module
-    #       command: |
-    #         cd ./example
-    #         yarn install
-    #         yarn tsc
-    #         yarn build:ios
-    #         yarn build:android
+     - run:
+          name: Compile example module
+          command: |
+            cd ./example
+            yarn install
+            yarn tsc
+            yarn build:ios
+            yarn build:android
 
   deploy:
     working_directory: ~/react-native-td
