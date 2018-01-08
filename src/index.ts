@@ -1,13 +1,14 @@
-import { NativeModules } from "react-native";
+// tslint:disable-next-line:no-implicit-dependencies
+import { NativeModules } from 'react-native';
 
 export type ErrorCode =
-  | "init_error"
-  | "invalid_param"
-  | "invalid_event"
-  | "data_conversion"
-  | "storage_error"
-  | "network_error"
-  | "server_response";
+  | 'init_error'
+  | 'invalid_param'
+  | 'invalid_event'
+  | 'data_conversion'
+  | 'storage_error'
+  | 'network_error'
+  | 'server_response';
 
 export interface TreasureData {
   initialize: (apiKey: string) => void;
@@ -34,12 +35,12 @@ export interface TreasureData {
     database: string | undefined | null,
     table: string,
     onSuccess: () => void,
-    onError: (errorCode: ErrorCode, message: string) => void
+    onError: (errorCode: ErrorCode, message: string) => void,
   ) => void;
   uploadEvents: () => void;
   uploadEventsWithCallback: (
     onSuccess: () => void,
-    onError: (errorCode: ErrorCode, message: string) => void
+    onError: (errorCode: ErrorCode, message: string) => void,
   ) => void;
   startSession: (table: string, database: string) => void;
   endSession: (table: string, database: string) => void;
@@ -49,6 +50,7 @@ export interface TreasureData {
   setSessionTimeoutMilli: (to: number) => void;
 }
 
+// tslint:disable-next-line:no-object-literal-type-assertion
 const TreasureData: TreasureData = {} as TreasureData;
 const { RNTreasureData } = NativeModules;
 
@@ -145,7 +147,7 @@ TreasureData.addEventWithCallback = (
   database: string | undefined | null,
   table: string,
   onSuccess: () => void,
-  onError: (errorCode: ErrorCode, message: string) => void
+  onError: (errorCode: ErrorCode, message: string) => void,
 ) => {
   if (database) {
     return RNTreasureData.addEventWithCallback(
@@ -153,14 +155,14 @@ TreasureData.addEventWithCallback = (
       database,
       table,
       onSuccess,
-      onError
+      onError,
     );
   } else {
     return RNTreasureData.addEventWithCallback(
       record,
       table,
       onSuccess,
-      onError
+      onError,
     );
   }
 };
@@ -171,7 +173,7 @@ TreasureData.uploadEvents = () => {
 
 TreasureData.uploadEventsWithCallback = (
   onSuccess: () => void,
-  onError: (errorCode: ErrorCode, message: string) => void
+  onError: (errorCode: ErrorCode, message: string) => void,
 ) => {
   return RNTreasureData.uploadEventsWithCallback(onSuccess, onError);
 };

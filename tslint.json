@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "extends": ["tslint:latest"],
   "rules": {
     "member-access": false,
     "member-ordering": [
@@ -31,7 +31,9 @@
       }
     ],
     "ban": false,
+    "no-console": false,
     "no-duplicate-variable": true,
+    "no-empty-interface": false,
     "no-implicit-dependencies": [true, "dev"],
     "no-null-keyword": true,
     "no-switch-case-fall-through": true,

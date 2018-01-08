@@ -1,1 +1,1 @@
-declare module "react-native-td";
+declare module 'react-native-td';
