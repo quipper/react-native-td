@@ -47,8 +47,8 @@ jobs:
             cd ./example
             yarn install
             yarn tsc
-            yarn build:ios
-            yarn build:android
+            # yarn build:ios
+            # yarn build:android
 
   deploy:
     working_directory: ~/react-native-td
