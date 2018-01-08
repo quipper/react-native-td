@@ -37,18 +37,18 @@ jobs:
             - react-native-td-{{ arch }}
       - run:
           name: Install dependencies
-          command: 'yarn install && yarn tsc'
-      - run:
-          name: Compile TypeScript
-          command: 'yarn tsc'
-     - run:
-          name: Compile example module
-          command: |
-            cd ./example
-            yarn install
-            yarn tsc
-            # yarn build:ios
-            # yarn build:android
+          command: 'yarn install'
+    #   - run:
+    #       name: Compile TypeScript
+    #       command: 'yarn tsc'
+    #  - run:
+    #       name: Compile example module
+    #       command: |
+    #         cd ./example
+    #         yarn install
+    #         yarn tsc
+    #         yarn build:ios
+    #         yarn build:android
 
   deploy:
     working_directory: ~/react-native-td
