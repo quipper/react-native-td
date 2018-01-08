@@ -237,7 +237,11 @@ public final class RNTreasureDataModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void isFirstRun(Promise promise) {
         boolean isFirstRun = TreasureData.sharedInstance().isFirstRun(getReactApplicationContext());
-        promise.resolve(isFirstRun);
+        if (isFirstRun) {
+            promise.resolve(null);
+        } else {
+            promise.reject(new Throwable("not first run"));
+        }
     }
 
     @ReactMethod

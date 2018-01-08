@@ -1,4 +1,5 @@
 #import "RNTreasureData.h"
+#import <React/RCTUtils.h>
 #import <TreasureData-iOS-SDK/TreasureData.h>
 
 @implementation RNTreasureData
@@ -246,18 +247,24 @@ RCT_EXPORT_METHOD(getSessionId:
                  reject:(RCTPromiseRejectBlock)reject)
 {
     NSString *sessionId = [TreasureData getSessionId];
-    if (!sessionId) {
-        reject(nil, @"sessionId is nil", nil);
-    } else {
+    if (sessionId) {
         resolve(sessionId);
+    } else {
+        reject(RCTErrorUnspecified, @"sessionId is nil", nil);
     }
 }
 
 RCT_EXPORT_METHOD(isFirstRun:
                  (RCTPromiseResolveBlock)resolve
-                 reject:(__unused RCTPromiseRejectBlock)reject)
+                 reject:(RCTPromiseRejectBlock)reject)
 {
     BOOL isFirstRun = [[TreasureData sharedInstance] isFirstRun];
+    if (isFirstRun) {
+        resolve(nil);
+    } else {
+        reject(RCTErrorUnspecified, nil, nil);
+    }
+
     resolve([NSNumber numberWithBool:isFirstRun]);
 }
 

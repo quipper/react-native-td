@@ -49,7 +49,7 @@ export interface TreasureData {
   startSession: (table: string, database: string) => void;
   endSession: (table: string, database: string) => void;
   getSessionId: () => Promise<string>;
-  isFirstRun: () => Promise<boolean>;
+  isFirstRun: () => Promise<void>;
   clearFirstRun: () => void;
   setSessionTimeoutMilli: (to: number) => void;
 }
@@ -226,7 +226,7 @@ TreasureData.getSessionId = (): Promise<string> => {
   return RNTreasureData.getSessionId();
 };
 
-TreasureData.isFirstRun = (): Promise<boolean> => {
+TreasureData.isFirstRun = (): Promise<void> => {
   return RNTreasureData.isFirstRun();
 };
 
