@@ -45,12 +45,12 @@ jobs:
           name: Compile example module
           command: |
             cd ./example
-            yarn install
-            yarn tsc
+            # yarn install
+            # yarn tsc
             # yarn build:ios
             # yarn build:android
 
-  deploy:
+  deploy_to_npm:
     working_directory: ~/react-native-td
     docker:
       - image: circleci/node:8.7.0
@@ -80,7 +80,7 @@ workflows:
       - compile_source:
           requires:
             - bundle_dependencies
-      - deploy:
+      - deploy_to_npm:
           requires:
             - compile_source
           filters: # for no branches and all tags
