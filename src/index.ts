@@ -1,5 +1,14 @@
 import { NativeModules } from "react-native";
 
+export type ErrorCode =
+  | "init_error"
+  | "invalid_param"
+  | "invalid_event"
+  | "data_conversion"
+  | "storage_error"
+  | "network_error"
+  | "server_response";
+
 export interface TreasureData {
   initialize: (apiKey: string) => void;
   initializeApiEndpoint: (apiEndpoint: string) => void;
@@ -25,12 +34,12 @@ export interface TreasureData {
     database: string | undefined | null,
     table: string,
     onSuccess: () => void,
-    onError: (errorCode: string, message: string) => void
+    onError: (errorCode: ErrorCode, message: string) => void
   ) => void;
   uploadEvents: () => void;
   uploadEventsWithCallback: (
     onSuccess: () => void,
-    onFailure: (errorCode: string, message: string) => void
+    onError: (errorCode: ErrorCode, message: string) => void
   ) => void;
   startSession: (table: string, database: string) => void;
   endSession: (table: string, database: string) => void;
@@ -136,7 +145,7 @@ TreasureData.addEventWithCallback = (
   database: string | undefined | null,
   table: string,
   onSuccess: () => void,
-  onError: (errorCode: string, message: string) => void
+  onError: (errorCode: ErrorCode, message: string) => void
 ) => {
   if (database) {
     return RNTreasureData.addEventWithCallback(
@@ -162,9 +171,9 @@ TreasureData.uploadEvents = () => {
 
 TreasureData.uploadEventsWithCallback = (
   onSuccess: () => void,
-  onFailure: (errorCode: string, message: string) => void
+  onError: (errorCode: ErrorCode, message: string) => void
 ) => {
-  return RNTreasureData.uploadEventsWithCallback(onSuccess, onFailure);
+  return RNTreasureData.uploadEventsWithCallback(onSuccess, onError);
 };
 
 TreasureData.startSession = () => {

@@ -129,40 +129,36 @@ RCT_EXPORT_METHOD(addEvent:
 
 RCT_EXPORT_METHOD(addEventWithCallback:
                   (NSDictionary *)record
-                  database:(NSString *)database
+                  database:(nullable NSString *)database
                   table:(NSString *) table
                   onSuccess:(RCTResponseSenderBlock) onSuccess
                   onError:(RCTResponseSenderBlock) onError)
 {
-    [[TreasureData sharedInstance]
-     addEventWithCallback:record
-     database:database
-     table:table
-     onSuccess:^(){
-         onSuccess();
-     }
-     onError:^(NSString* errorCode, NSString* message) {
-         onError(@[errorCode, message]);
-     }
-    ];
-}
-
-RCT_EXPORT_METHOD(addEventWithCallback:
-                  (NSDictionary *)record
-                  table:(NSString *) table
-                  onSuccess:(RCTResponseSenderBlock) onSuccess
-                  onError:(RCTResponseSenderBlock) onError)
-{
-    [[TreasureData sharedInstance]
-     addEventWithCallback:record
-     table:table
-     onSuccess:^(){
-         onSuccess();
-     }
-     onError:^(NSString* errorCode, NSString* message) {
-         onError(@[errorCode, message]);
-     }
-    ];
+    
+    if (database) {
+        [[TreasureData sharedInstance]
+         addEventWithCallback:record
+         database:database
+         table:table
+         onSuccess:^(){
+             onSuccess(nil);
+         }
+         onError:^(NSString* errorCode, NSString* message) {
+             onError(@[errorCode, message]);
+         }
+         ];
+    } else {
+        [[TreasureData sharedInstance]
+         addEventWithCallback:record
+         table:table
+         onSuccess:^(){
+             onSuccess(nil);
+         }
+         onError:^(NSString* errorCode, NSString* message) {
+             onError(@[errorCode, message]);
+         }
+         ];
+    }
 }
 
 RCT_EXPORT_METHOD(uploadEvents)
@@ -171,13 +167,13 @@ RCT_EXPORT_METHOD(uploadEvents)
 }
 
 RCT_EXPORT_METHOD(uploadEventsWithCallback:
-                  onSuccess:(RCTResponseSenderBlock) onSuccess
+                  (RCTResponseSenderBlock) onSuccess
                   onError:(RCTResponseSenderBlock) onError)
 {
     [[TreasureData sharedInstance]
-     uploadEventsWithCallback:record
-     onSuccess:^(){
-         onSuccess();
+     uploadEventsWithCallback:
+     ^(){
+         onSuccess(nil);
      }
      onError:^(NSString* errorCode, NSString* message) {
          onError(@[errorCode, message]);
@@ -219,8 +215,8 @@ RCT_EXPORT_METHOD(endSession:
     [[TreasureData sharedInstance] endSession:table database: database];
 }
 
-RCT_EXPORT_METHOD(getSessionId,
-                 resolve:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(getSessionId:
+                 (RCTPromiseResolveBlock)resolve
                  reject:(RCTPromiseRejectBlock)reject)
 {
     NSString *sessionId = [TreasureData getSessionId];
@@ -231,12 +227,12 @@ RCT_EXPORT_METHOD(getSessionId,
     }
 }
 
-RCT_EXPORT_METHOD(isFirstRun,
-                 resolve:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(isFirstRun:
+                 (RCTPromiseResolveBlock)resolve
                  reject:(__unused RCTPromiseRejectBlock)reject)
 {
     BOOL isFirstRun = [[TreasureData sharedInstance] isFirstRun];
-    resolve(isFirstRun);
+    resolve([NSNumber numberWithBool:isFirstRun]);
 }
 
 RCT_EXPORT_METHOD(clearFirstRun)
@@ -247,7 +243,7 @@ RCT_EXPORT_METHOD(clearFirstRun)
 RCT_EXPORT_METHOD(setSessionTimeoutMilli:
                   (NSNumber *)to)
 {
-    [TreasureData setSessionTimeoutMilli:to];
+    [TreasureData setSessionTimeoutMilli:(long)to];
 }
 
 @end
