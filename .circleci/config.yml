@@ -38,15 +38,15 @@ jobs:
       - run:
           name: Install dependencies
           command: 'yarn install && yarn tsc'
-      # - run:
-      #     name: Compile TypeScript
+      - run:
+          name: Compile TypeScript
       #     command: 'yarn tsc'
      - run:
           name: Build example module
           command: |
             cd ./example
             yarn install
-            tsc
+            yarn tsc
             yarn build:ios
             yarn build:android
 
