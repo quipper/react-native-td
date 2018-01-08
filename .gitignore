@@ -27,7 +27,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-*/ios/Pods/
+*/ios/Pods
+*.jsbundle
+*.jsbundle.meta
 
 # Android/IntelliJ
 #
@@ -39,6 +41,8 @@ local.properties
 *.iml
 *.classpath
 *.project
+*.android.bundle
+*.android.bundle.meta
 
 # BUCK
 buck-out/
