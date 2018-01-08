@@ -41,14 +41,14 @@ jobs:
       - run:
           name: Compile TypeScript
           command: 'yarn tsc'
-    #  - run:
-          # name: Compile example module
-          # command: |
-            # cd ./example
-            # yarn install
-            # yarn tsc
-            # yarn build:ios
-            # yarn build:android
+      - run:
+          name: Compile example module
+          command: |
+            cd ./example
+            yarn install
+            yarn tsc
+            yarn build:ios
+            yarn build:android
 
   deploy_to_npm:
     working_directory: ~/react-native-td
@@ -66,11 +66,11 @@ jobs:
       - run:
           name: Compile TypeScript
           command: 'yarn tsc'
-    #  - run:
-    #       name: Login to npm and publish
-    #       command: |
-    #         echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-    #         npm publish
+      # - run:
+      #     name: Login to npm and publish
+      #     command: |
+      #       echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      #       npm publish
 
 workflows:
   version: 2
