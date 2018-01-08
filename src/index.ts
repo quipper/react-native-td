@@ -29,7 +29,11 @@ export interface TreasureData {
   disableServerSideUploadTimestamp: () => void;
   enableLogging: () => void;
   disableLogging: () => void;
-  addEvent: (record: object, database: string, table: string) => void;
+  enableRetryUploading: () => void;
+  disableRetryUploading: () => void;
+  enableEventCompression: () => void;
+  disableEventCompression: () => void;
+  addEvent: (record: object, database: string | undefined| null, table: string) => void;
   addEventWithCallback: (
     record: object,
     database: string | undefined | null,
@@ -134,12 +138,28 @@ TreasureData.disableLogging = () => {
   return RNTreasureData.disableLogging();
 };
 
-TreasureData.addEvent = (record: object, database: string, table: string) => {
-  return RNTreasureData.addEvent(record, database, table);
+TreasureData.enableRetryUploading = () => {
+  return RNTreasureData.enableRetryUploading();
 };
 
-TreasureData.addEvent = (record: object, table: string) => {
-  return RNTreasureData.addEvent(record, table);
+TreasureData.disableRetryUploading = () => {
+  return RNTreasureData.disableRetryUploading();
+};
+
+TreasureData.enableEventCompression = () => {
+  return RNTreasureData.enableEventCompression();
+};
+
+TreasureData.disableEventCompression = () => {
+  return RNTreasureData.disableEventCompression();
+};
+
+TreasureData.addEvent = (record: object, database: string | undefined | null, table: string) => {
+  if (database) {
+    return RNTreasureData.addEvent(record, database, table);
+  } else {
+    return RNTreasureData.addEvent(record, table);
+  }
 };
 
 TreasureData.addEventWithCallback = (

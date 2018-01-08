@@ -121,6 +121,26 @@ RCT_EXPORT_METHOD(disableLogging)
     [TreasureData disableLogging];
 }
 
+RCT_EXPORT_METHOD(enableRetryUploading)
+{
+    [[TreasureData sharedInstance] enableRetryUploading];
+}
+
+RCT_EXPORT_METHOD(disableRetryUploading)
+{
+    [[TreasureData sharedInstance] disableRetryUploading];
+}
+
+RCT_EXPORT_METHOD(enableEventCompression)
+{
+    [TreasureData enableEventCompression];
+}
+
+RCT_EXPORT_METHOD(disableEventCompression)
+{
+    [TreasureData disableEventCompression];
+}
+
 RCT_EXPORT_METHOD(addEvent:
                   (NSDictionary *)record database:(NSString *)database table:(NSString *)table)
 {

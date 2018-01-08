@@ -249,4 +249,24 @@ public final class RNTreasureDataModule extends ReactContextBaseJavaModule {
     public void setSessionTimeoutMilli(long to) {
         TreasureData.setSessionTimeoutMilli(to);
     }
+
+    @ReactMethod
+    public void enableRetryUploading() {
+        TreasureData.sharedInstance().enableAutoRetryUploading();
+    }
+
+    @ReactMethod
+    public void disableRetryUploading() {
+        TreasureData.sharedInstance().disableAutoRetryUploading();
+    }
+
+    @ReactMethod
+    public void enableEventCompression() {
+        TreasureData.enableEventCompression();
+    }
+
+    @ReactMethod
+    public void disableEventCompression() {
+        TreasureData.disableEventCompression();
+    }
 }
