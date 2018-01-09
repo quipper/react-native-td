@@ -22,7 +22,7 @@ jobs:
       - save_cache:
           key: react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
-            - ~/qlearn-react-native/node_modules
+            - ~/react-native-td/node_modules
             - ~/.cache/yarn
 
   compile_source:
