@@ -74,18 +74,13 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  build_and_deploy:
     jobs:
-      - bundle_dependencies:
-        filters: # for all branches and all tags
-          tags:
-            only: /.*/
-          branches:
-            only: /.*/
+      - bundle_dependencies
       - compile_source:
           requires:
             - bundle_dependencies
-          filters: # for all branches and all tags
+          filters:
             tags:
               only: /.*/
             branches:
@@ -93,7 +88,7 @@ workflows:
       - deploy_to_npm:
           requires:
             - compile_source
-          filters: # for no branches and all tags
+          filters:
             tags:
               only: /.*/
             branches:
