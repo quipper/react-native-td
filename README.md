@@ -13,6 +13,16 @@ npm install --save react-native-td
 react-native link react-native-td
 ```
 
+### iOS configuration
+
+If you haven't introduced cocoapods, install it and run `pod init` under `ios/`and make sure lines below are in `Podfile`.
+
+```diff
++ pod 'RNTreasureData', :path => '../node_modules/react-native-td'
++ pod 'React', path: '../node_modules/react-native'
++ pod 'yoga', path: '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
+```
+
 ## Usage
 
 Basically react-native-td imitates the interface of TreasureData iOS/Android SDK as close as possible.
