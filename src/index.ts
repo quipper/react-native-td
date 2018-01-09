@@ -1,4 +1,3 @@
-// tslint:disable-next-line:no-implicit-dependencies
 import { NativeModules } from 'react-native';
 
 export type ErrorCode =
@@ -33,18 +32,18 @@ export interface TreasureData {
   disableRetryUploading: () => void;
   enableEventCompression: () => void;
   disableEventCompression: () => void;
-  addEvent: (record: object, database: string | undefined| null, table: string) => void;
+  addEvent: (record: object, database: string | undefined | null, table: string) => void;
   addEventWithCallback: (
     record: object,
     database: string | undefined | null,
     table: string,
     onSuccess: () => void,
-    onError: (errorCode: ErrorCode, message: string) => void,
+    onError: (errorCode: ErrorCode, message: string | undefined | null) => void,
   ) => void;
   uploadEvents: () => void;
   uploadEventsWithCallback: (
     onSuccess: () => void,
-    onError: (errorCode: ErrorCode, message: string) => void,
+    onError: (errorCode: ErrorCode, message: string | undefined | null) => void,
   ) => void;
   startSession: (table: string, database: string) => void;
   endSession: (table: string, database: string) => void;
@@ -167,7 +166,7 @@ TreasureData.addEventWithCallback = (
   database: string | undefined | null,
   table: string,
   onSuccess: () => void,
-  onError: (errorCode: ErrorCode, message: string) => void,
+  onError: (errorCode: ErrorCode, message: string | undefined | null) => void,
 ) => {
   if (database) {
     return RNTreasureData.addEventWithCallback(
@@ -193,7 +192,7 @@ TreasureData.uploadEvents = () => {
 
 TreasureData.uploadEventsWithCallback = (
   onSuccess: () => void,
-  onError: (errorCode: ErrorCode, message: string) => void,
+  onError: (errorCode: ErrorCode, message: string | undefined | null) => void,
 ) => {
   return RNTreasureData.uploadEventsWithCallback(onSuccess, onError);
 };
