@@ -1,0 +1,90 @@
+version: 2
+jobs:
+  bundle_dependencies:
+    working_directory: ~/react-native-td
+    docker:
+      - image: circleci/node:8.7.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}
+      - run:
+          name: System information
+          command: |
+            echo "Node $(node -v)"
+            echo "npm $(node -v)"
+            echo "yarn $(yarn -version)"
+      - run:
+          name: Install dependencies
+          command: 'yarn install'
+      - save_cache:
+          key: react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/react-native-td/node_modules
+            - ~/.cache/yarn
+
+  compile_source:
+    working_directory: ~/react-native-td
+    docker:
+      - image: circleci/node:8.7.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}
+      - run:
+          name: Install dependencies
+          command: 'yarn install'
+      - run:
+          name: Compile TypeScript
+          command: 'yarn tsc'
+      - run:
+          name: Compile example module
+          command: |
+            cd ./example
+            yarn install
+            yarn tsc
+            yarn build:ios
+            yarn build:android
+
+  deploy_to_npm:
+    working_directory: ~/react-native-td
+    docker:
+      - image: circleci/node:8.7.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}
+      - run:
+          name: Install dependencies
+          command: 'yarn install'
+      - run:
+          name: Compile TypeScript
+          command: 'yarn tsc'
+      - run:
+          name: Login to npm and publish
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            npm publish
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - bundle_dependencies
+      - compile_source:
+          requires:
+            - bundle_dependencies
+      - deploy_to_npm:
+          requires:
+            - compile_source
+          filters: # for no branches and all tags
+            tags:
+              only: /.*/
+            branches:
+              ignore: /.*/

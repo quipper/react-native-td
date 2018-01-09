@@ -1,0 +1,39 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'RNTreasureDataExample' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  pod 'RNTreasureData', :path => '../node_modules/react-native-td'
+
+  react_native_path = "../node_modules/react-native"
+  pod "yoga", :path => "#{react_native_path}/ReactCommon/yoga"
+
+  # Pods for ReactNativeFirebaseDemo
+  pod 'React', :path => '../node_modules/react-native', :subspecs => [
+   'Core',
+   'BatchedBridge',
+   'RCTText',
+   'RCTNetwork',
+   'RCTWebSocket',
+   ]
+
+  target 'RNTreasureDataExampleTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
+
+target 'RNTreasureDataExample-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for RNTreasureDataExample-tvOS
+
+  target 'RNTreasureDataExample-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
