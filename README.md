@@ -1,4 +1,4 @@
-# react-native-td [![npm version](https://badge.fury.io/js/react-native-td.svg)](https://badge.fury.io/js/react-native-td)
+# react-native-td [![CircleCI](https://circleci.com/gh/quipper/react-native-td.svg?style=svg)](https://circleci.com/gh/quipper/react-native-td) [![npm version](https://badge.fury.io/js/react-native-td.svg)](https://badge.fury.io/js/react-native-td)
 
 react-native-td is an unofficial React Native SDK for Treasure Data.
 
@@ -29,8 +29,8 @@ Basically react-native-td imitates the interface of TreasureData iOS/Android SDK
 
 Hence to know more detail check official documents below.
 
-iOS: https://docs.treasuredata.com/articles/ios-sdk
-Android: https://docs.treasuredata.com/articles/android-sdk
+- iOS: https://docs.treasuredata.com/articles/ios-sdk
+- Android: https://docs.treasuredata.com/articles/android-sdk
 
 ### Instantiate with your API key
 
