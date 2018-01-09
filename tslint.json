@@ -5,11 +5,7 @@
     "member-ordering": [
       true,
       {
-        "order": [
-          "public-before-private",
-          "static-before-instance",
-          "variables-before-functions"
-        ]
+        "order": "fields-first"
       }
     ],
     "no-any": true,
