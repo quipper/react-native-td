@@ -29,8 +29,8 @@ Basically react-native-td imitates the interface of TreasureData iOS/Android SDK
 
 Hence to know more detail check official documents below.
 
-iOS: https://docs.treasuredata.com/articles/ios-sdk
-Android: https://docs.treasuredata.com/articles/android-sdk
+- iOS: https://docs.treasuredata.com/articles/ios-sdk
+- Android: https://docs.treasuredata.com/articles/android-sdk
 
 ### Instantiate with your API key
 
