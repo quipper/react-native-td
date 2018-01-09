@@ -1,38 +1,19 @@
 PODS:
   - KeenClientTD (3.2.32)
-  - React/BatchedBridge (0.51.0):
-    - React/Core
-    - React/cxxreact_legacy
+  - React (0.51.0):
+    - React/Core (= 0.51.0)
   - React/Core (0.51.0):
     - yoga (= 0.51.0.React)
-  - React/cxxreact_legacy (0.51.0):
-    - React/jschelpers_legacy
-  - React/fishhook (0.51.0)
-  - React/jschelpers_legacy (0.51.0)
-  - React/RCTBlob (0.51.0):
-    - React/Core
-  - React/RCTNetwork (0.51.0):
-    - React/Core
-  - React/RCTText (0.51.0):
-    - React/Core
-  - React/RCTWebSocket (0.51.0):
-    - React/Core
-    - React/fishhook
-    - React/RCTBlob
-  - RNTreasureData (0.9.0):
+  - RNTreasureData (0.9.1):
     - TreasureData-iOS-SDK
   - TreasureData-iOS-SDK (0.1.24):
     - KeenClientTD (= 3.2.32)
   - yoga (0.51.0.React)
 
 DEPENDENCIES:
-  - React/BatchedBridge (from `../node_modules/react-native`)
-  - React/Core (from `../node_modules/react-native`)
-  - React/RCTNetwork (from `../node_modules/react-native`)
-  - React/RCTText (from `../node_modules/react-native`)
-  - React/RCTWebSocket (from `../node_modules/react-native`)
+  - React (from `../node_modules/react-native`)
   - RNTreasureData (from `../node_modules/react-native-td`)
-  - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
+  - yoga (from `../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
 
 EXTERNAL SOURCES:
   React:
@@ -40,15 +21,15 @@ EXTERNAL SOURCES:
   RNTreasureData:
     :path: ../node_modules/react-native-td
   yoga:
-    :path: ../node_modules/react-native/ReactCommon/yoga
+    :path: ../node_modules/react-native/ReactCommon/yoga/Yoga.podspec
 
 SPEC CHECKSUMS:
   KeenClientTD: 66da83b01742f4983925391e70b5beecb4096bd1
   React: 352f02f1db6e4744f9a758527e13e3fdefbbd6ba
-  RNTreasureData: 8d7fb2430df1f57232afba640f75cd80d66b1a5b
+  RNTreasureData: ded2c51c87cc181b351ee1fa5c336636320eb5ea
   TreasureData-iOS-SDK: e8b6d8cde3807c4ad600eb132227fb4eb20762bd
   yoga: b5d96400ca8b2936965a7a6516da7c1177f432a3
 
-PODFILE CHECKSUM: 098acb1bc56c5af1525359c18bf272726602229b
+PODFILE CHECKSUM: e5e8f54f971ee927a3ed7a5d8cafd10544618bfe
 
 COCOAPODS: 1.3.1
