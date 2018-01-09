@@ -1,4 +1,4 @@
-# react-native-td
+# react-native-td [![npm version](https://badge.fury.io/js/react-native-td.svg)](https://badge.fury.io/js/react-native-td)
 
 react-native-td is an unofficial React Native SDK for Treasure Data.
 
