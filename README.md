@@ -1,4 +1,4 @@
-# react-native-td [![npm version](https://badge.fury.io/js/react-native-td.svg)](https://badge.fury.io/js/react-native-td)
+# react-native-td [![CircleCI](https://circleci.com/gh/quipper/react-native-td.svg?style=svg)](https://circleci.com/gh/quipper/react-native-td) [![npm version](https://badge.fury.io/js/react-native-td.svg)](https://badge.fury.io/js/react-native-td)
 
 react-native-td is an unofficial React Native SDK for Treasure Data.
 
