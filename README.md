@@ -39,12 +39,12 @@ We recommend to use a write-only API key for the SDK. To obtain one, please:
 
 ### Add a event to local buffer
 
-To add a event to local buffer, you can call `addEvent` or `addEventWithCallback` API.
+To add an event to local buffer, you can call `addEvent` or `addEventWithCallback` API.
 
 ```ts
 TreasureData.addEventWithCallback(
   { event: "event_name" },
-  "databse_name",
+  "database_name",
   "record_name",
   () => {
     console.log("onSuccess is called.");
