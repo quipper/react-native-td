@@ -35,8 +35,7 @@ public final class RNTreasureDataModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void initialize(@Nonnull String apiKey) {
-        TreasureData.initializeDefaultApiKey(apiKey);
-        TreasureData.initializeSharedInstance(getReactApplicationContext());
+        TreasureData.initializeSharedInstance(getReactApplicationContext(), apiKey);
     }
 
     @ReactMethod
