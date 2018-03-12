@@ -11,7 +11,10 @@
   "author": "Shintaro Katafuchi",
   "bugs": "https://github.com/quipper/react-native-td/issues",
   "license": "APACHE-2.0",
-  "keywords": ["react-native", "treasure-data"],
+  "keywords": [
+    "react-native",
+    "treasure-data"
+  ],
   "peerDependencies": {
     "react": "^16.0.0",
     "react-native": "0.51.0"

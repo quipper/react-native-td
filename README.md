@@ -18,9 +18,15 @@ react-native link react-native-td
 If you haven't introduced cocoapods, install it and run `pod init` under `ios/`and make sure lines below are in `Podfile`.
 
 ```diff
++ pod 'React', :path => '../node_modules/react-native', :subspecs => [
++   'Core',
++   'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
++   'RCTText',
++   'RCTNetwork',
++   'RCTWebSocket', # needed for debugging
++ ]
++ pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
 + pod 'RNTreasureData', :path => '../node_modules/react-native-td'
-+ pod 'React', path: '../node_modules/react-native'
-+ pod 'yoga', path: '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
 ```
 
 ## Usage
