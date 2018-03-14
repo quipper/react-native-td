@@ -13,7 +13,7 @@ export interface TreasureData {
   initialize: (apiKey: string) => void;
   initializeApiEndpoint: (apiEndpoint: string) => void;
   initializeEncryptionKey: (encryptionKey: string) => void;
-  setDefaultDatabase: (databse: string) => void;
+  setDefaultDatabase: (database: string) => void;
   enableAutoAppendUniqId: () => void;
   disableAutoAppendUniqId: () => void;
   enableAutoAppendRecordUUID: (column: string) => void;
@@ -69,8 +69,8 @@ TreasureData.initializeEncryptionKey = (encryptionKey: string) => {
   return RNTreasureData.initializeEncryptionKey(encryptionKey);
 };
 
-TreasureData.setDefaultDatabase = (databse: string) => {
-  return RNTreasureData.setDefaultDatabase(databse);
+TreasureData.setDefaultDatabase = (database: string) => {
+  return RNTreasureData.setDefaultDatabase(database);
 };
 
 TreasureData.enableAutoAppendUniqId = () => {
