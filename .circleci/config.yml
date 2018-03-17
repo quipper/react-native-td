@@ -39,15 +39,15 @@ jobs:
           command: 'npm install'
       - run:
           name: Compile TypeScript
-          command: 'npm tsc'
+          command: 'npm run tsc'
       - run:
           name: Compile example module
           command: |
             cd ./example
             npm install
-            npm tsc
-            npm build:ios
-            npm build:android
+            npm run tsc
+            npm run build:ios
+            npm run build:android
 
   deploy_to_npm:
     working_directory: ~/react-native-td
@@ -64,7 +64,7 @@ jobs:
           command: 'npm install'
       - run:
           name: Compile TypeScript
-          command: 'npm tsc'
+          command: 'npm run tsc'
       - run:
           name: Login to npm and publish
           command: |
