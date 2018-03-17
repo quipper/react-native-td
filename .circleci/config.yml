@@ -8,19 +8,18 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - react-native-td-{{ arch }}
       - run:
           name: System information
           command: |
             echo "Node $(node -v)"
             echo "npm $(node -v)"
-            echo "yarn $(yarn -version)"
       - run:
           name: Install dependencies
-          command: 'yarn install'
+          command: 'npm install'
       - save_cache:
-          key: react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - ~/react-native-td/node_modules
             - ~/.cache/yarn
@@ -33,22 +32,22 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - react-native-td-{{ arch }}
       - run:
           name: Install dependencies
-          command: 'yarn install'
+          command: 'npm install'
       - run:
           name: Compile TypeScript
-          command: 'yarn tsc'
+          command: 'npm tsc'
       - run:
           name: Compile example module
           command: |
             cd ./example
-            yarn install
-            yarn tsc
-            yarn build:ios
-            yarn build:android
+            npm install
+            npm tsc
+            npm build:ios
+            npm build:android
 
   deploy_to_npm:
     working_directory: ~/react-native-td
@@ -58,14 +57,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - react-native-td-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - react-native-td-{{ arch }}
       - run:
           name: Install dependencies
-          command: 'yarn install'
+          command: 'npm install'
       - run:
           name: Compile TypeScript
-          command: 'yarn tsc'
+          command: 'npm tsc'
       - run:
           name: Login to npm and publish
           command: |
@@ -76,7 +75,12 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - bundle_dependencies
+      - bundle_dependencies:
+          filters:
+            tags:
+              only: /.*/
+            branches:
+              only: /.*/
       - compile_source:
           requires:
             - bundle_dependencies
