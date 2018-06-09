@@ -264,8 +264,6 @@ RCT_EXPORT_METHOD(isFirstRun:
     } else {
         reject(RCTErrorUnspecified, nil, nil);
     }
-
-    resolve([NSNumber numberWithBool:isFirstRun]);
 }
 
 RCT_EXPORT_METHOD(clearFirstRun)
