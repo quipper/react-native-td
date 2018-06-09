@@ -16,5 +16,7 @@ Pod::Spec.new do |s|
   s.source        = { :git => 'https://github.com/quipper/react-native-td.git' }
   s.source_files  = "ios/*.{h,m}"
   s.requires_arc = true
+
   s.dependency "TreasureData-iOS-SDK"
+  s.dependency "React"
 end
