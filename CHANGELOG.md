@@ -1,3 +1,6 @@
+- 0.9.3 2018/07/01
+  - [Fix][Add React dependency to podspec](https://github.com/quipper/react-native-td/pull/17)
+  - [Fix][isFirstRun was calling callback method twice](https://github.com/quipper/react-native-td/pull/18)
 - 0.9.2 2018/03/17
   - [Fix][Fix typo](https://github.com/quipper/react-native-td/pull/14)
 - 0.9.1 2018/01/09
