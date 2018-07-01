@@ -1,6 +1,6 @@
 {
   "name": "react-native-td",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "An unofficial React Native SDK for Treasure Data.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
