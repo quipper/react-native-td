@@ -1,54 +1,49 @@
-import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
-import TreasureData from "react-native-td";
-
-interface Props {}
-
-interface State {}
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import TreasureData from 'react-native-td';
 
 const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
+    'Double tap R on your keyboard to reload,\n' +
+    'Shake or press menu button for dev menu',
 });
 
-const styles: any = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
-    textAlign: "center",
-    margin: 10
+    textAlign: 'center',
+    margin: 10,
   },
   instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
 
-export default class App extends Component<Props, State> {
+export default class App extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
     TreasureData.addEventWithCallback(
-      { event: "event_name" },
-      "databse_name",
-      "record_name",
+      { event: 'event_name' },
+      'database_name',
+      'record_name',
       () => {
-        console.log("onSuccess is called.");
+        console.log('onSuccess is called.');
       },
       (error, message) => {
-        console.log(`Error: ${error}`);
-        console.log(`Message: ${message}`);
-      }
+        console.log(`Error: ${error}`, `Message: ${message}`);
+      },
     );
   }
 
@@ -58,15 +53,14 @@ export default class App extends Component<Props, State> {
         TreasureData.clearFirstRun();
         TreasureData.uploadEventsWithCallback(
           () => {
-            console.log("onSuccess is called.");
+            console.log('onSuccess is called.');
           },
           (error, message) => {
-            console.log(`Error: ${error}`);
-            console.log(`Message: ${message}`);
-          }
+            console.log(`Error: ${error}`, `Message: ${message}`);
+          },
         );
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
